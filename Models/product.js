@@ -9,7 +9,7 @@ const ProductSchema = new Schema(
     bestSeller: { type: Boolean, ref: 'Cusine' },
     image: { type: String, required: true},
     jewelryId: { type: Schema.Types.ObjectId, required: true}, 
-    metalId: { type: Schema.Types.ObjectId, rewuired: true}
+    metalId: { type: Schema.Types.ObjectId, required: true}
   },
   { timestamps: true }
 )
