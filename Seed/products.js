@@ -46,10 +46,32 @@ const main = async () => {
             image: "https://commonera.com/cdn/shop/products/Hecate6.jpg?crop=center&height=1500&v=1680293592&width=1500",
             jewelryId: ring._id
           }, 
+          {
+            name: "Magic Sator Square Gold Signet Ring",
+            price: 990,
+            inStock: true, 
+            description: "Adorn your fingers with a symbol of protection and a piece of ancient mysticism. This is more than just a ring—it's a conversation starter, a statement piece, and a link to a bygone era of ancient intrigue and wonder.",
+            bestSeller: true, 
+            image: "https://commonera.com/cdn/shop/files/satorring1.jpg?crop=center&height=1500&v=1696513520&width=1500",
+            jewelryId: ring._id
+          },
+          {
+            name: "Gaia Molten Ring",
+            price: 795,
+            inStock: true, 
+            description: "This molten gold ring is inspired by the depiction of Tellus, the roman equivalent of Gaia, on eastern frieze of the Ara Pacis. She is cast in 100% solid gold and is made to order in 2 weeks in our NYC studio.",
+            bestSeller: true, 
+            image: "https://commonera.com/cdn/shop/products/gaia5.jpg?crop=center&height=1500&v=1680293531&width=1500",
+            jewelryId: ring._id
+          }
   ]
 
-  await Review.insertMany(products)
-  console.log('Created products with jewels!')
+  await Product.insertMany(products)
+  console.log(`created products with jewels!`)
+}
+const run = async () => {
+await main()
+db.close()
 }
 
-main().catch(console.error)
+run()

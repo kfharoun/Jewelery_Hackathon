@@ -7,15 +7,15 @@ const main = async () => {
     const jewels =
   [
     {
-      jewelryType: "Necklace",
+      jewelType: "Necklace",
       metalType: ["18k Gold Vermeil", "14k Solid Gold", "Rose Gold"]
     },
     {
-       jewelryType: "Ring",
+       jewelType: "Ring",
         metalType: ["14k Yellow Gold", "14k White Gold", "18k Solid Yellow Gold"]
     }
   ]
-  await Movie.insertMany(jewels)
+  await Jewel.insertMany(jewels)
   console.log(`created jewels!`)
 }
 const run = async () => {
