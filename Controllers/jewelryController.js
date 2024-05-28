@@ -1,4 +1,4 @@
-const { Jewelry } = require('../models');
+const { Jewelry } = require('../Models');
 const mongoose = require('mongoose');
 
 
