@@ -2,8 +2,8 @@ const { Schema } = require('mongoose')
 
 const JewelSchema = new Schema(
   {
-    JewelType: { type: String, required: true },
-    metalType: { type: String, required: true }
+    jewelType: { type: String, required: true },
+    metalType: { type: Array, required: true }
   },
   { timestamps: true }
 )
