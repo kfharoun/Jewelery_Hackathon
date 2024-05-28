@@ -6,7 +6,7 @@ const ProductSchema = new Schema(
     price: { type: Number, required: true },
     inStock: {type: Boolean, required: true},
     description: {type: String, required: true},
-    bestSeller: { type: Boolean, ref: 'Cusine' },
+    bestSeller: { type: Boolean, required: true },
     image: { type: String, required: true},
     jewelryId: { type: Schema.Types.ObjectId, required: true}, 
     metalId: { type: Schema.Types.ObjectId, required: true}
