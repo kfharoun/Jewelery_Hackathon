@@ -8,7 +8,8 @@ const ProductSchema = new Schema(
     description: {type: String, required: true},
     bestSeller: { type: Boolean, ref: 'Cusine' },
     image: { type: String, required: true},
-    jewelryId: { type: Schema.Types.ObjectId, required: true} 
+    jewelryId: { type: Schema.Types.ObjectId, required: true}, 
+    metalId: { type: Schema.Types.ObjectId, rewuired: true}
   },
   { timestamps: true }
 )
