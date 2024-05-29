@@ -105,10 +105,12 @@ p {
     font-weight: 400;
     font-size: 12px;
     margin-top: 0;
+    margin-bottom: 50px;
 
 }
 
 .shortDesc {
     font-size: 12px;
     text-transform:uppercase;
+    margin-bottom: 5px;
 }
