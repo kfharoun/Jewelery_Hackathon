@@ -20,13 +20,13 @@ const main = async () => {
       jewelryId: necklace._id
     }, 
     {
-        name: "Circe Demi-Goddess of Witchcraft Necklace with Diamond",
+        name: "Circe Demi-Goddess of Witchcraft Necklace",
         price: 320,
         inStock: true, 
         description: "This medallion is etched with a line drawing of Circe, with a 1.3mm diamond sun shining down upon her, just like on her island, Aeaea. Wear this piece when you're feeling the need to turn some boys into boars.",
         bestSeller: true, 
         image: "https://commonera.com/cdn/shop/products/Circe.jpg?crop=center&height=1500&v=1696512895&width=1500",
-        shortDesc: "Demi-Goddess of Witchcraft and Magic",
+        shortDesc: "The Enchantress",
         jewelryId: necklace._id
       }, 
       {
