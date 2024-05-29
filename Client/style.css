@@ -103,9 +103,9 @@ h2 {
 
 p {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 0;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
 }
 
@@ -113,4 +113,5 @@ p {
     font-size: 12px;
     text-transform:uppercase;
     margin-bottom: 5px;
+    color: #7d6d4a;
 }
