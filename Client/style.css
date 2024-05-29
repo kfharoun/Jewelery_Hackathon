@@ -1,3 +1,73 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .refreshLogo {
     width: 100px;
+    margin-left: 2rem;
+    
+}
+
+.title {
+    width:300px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    position:absolute;
+    font-size: 22px;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    top: 22%;
+}
+
+.products {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#searchBar, #search {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#search {
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-transform: lowercase;
+}
+
+#searchBar {
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-color: #E0E0E0;
+    border-style: solid;
+    border-width: thin;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.buttons {
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+.titleDesc {
+    display: flex;
+    justify-content: center;
 }
