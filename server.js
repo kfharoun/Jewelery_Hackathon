@@ -23,8 +23,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/jewelry', jewelControllers.getAllJewelry)
-
 app.get('/products', productControllers.getAllProducts)
+
+app.get('/jewelry/:id', jewelControllers.getJewelById)
+app.get('/products/:id', productControllers.getProductById)
 
 
 
@@ -35,7 +37,7 @@ app.get('/products', productControllers.getAllProducts)
 
 
 
-// get info byID
+// get infoByID
 
 
 // create
