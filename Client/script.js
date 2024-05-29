@@ -1,44 +1,4 @@
 
-// const button = document.querySelector("#search");
-// const logoImage = document.querySelector(".refreshLogo");
-// const description = document.querySelector("#descriptionID");
-
-
-// Button EventListener
-// button.addEventListener('click', async ()=> {
-//     let input = document.querySelector("#searchBar").value;
-//     if (input!== ``) {
-//         let response = await axios.get(
-//             `http://localhost:3001/${input}`
-//         )
-//         console.log(response.data);
-//     }
-// });
-// // Logo EvenetListener
-// logoImage.addEventListener('click', async ()=> {
-//     let logo = document.querySelector(".refreshLogo");
-//     let response = await axios.get(
-//         `http://localhost:3001/${logo}`
-//     )
-//     console.log(response.data);
-    
-// });
-
-
-const handleProductClick = (productId) => {
-    // Open description page (popup window) or navigate to another page
-    // Replace this with your actual implementation
-    // For example, if you want to navigate to a product detail page:
-    window.location.href = `/products/${productId}`; // Assuming your product detail page URL follows this pattern
-};
-
-const handleLogoClick = () => {
-    // Return to home page or refresh the page
-    // Replace this with your actual implementation
-    // For example, to return to the home page:
-    window.location.href = '/'; // Assuming your home page URL is '/'
-};
-
 
 // Define the displayProducts function
 const displayProducts = (products) => {
@@ -92,22 +52,45 @@ const fetchAndPopulateData = async () => {
                     <p>Price: $${product.price}</p>
                 </div>
             `;
-            productsContainer.appendChild(productElement);
-        });
+            productsContainer.appendChild(productElement)
+        })
     } catch (error) {
-        console.error('Error fetching and populating data:', error.message);
+        console.error('Error fetching and populating data:', error.message)
     }
-};
+}
 
-// // Event listener for search button
-// document.getElementById('searchBtn').addEventListener('click', () => {
-//     // Handle search button click
-//     // You can implement search functionality here
-//     console.log('Search button clicked');
-// });
 
-// Event listener for logo
-// document.querySelector('.refreshLogo').addEventListener('click', handleLogoClick);
+const filterProducts = (searchTerm, products) => {
+    const filteredProducts = products.filter(product => {
+        return product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+    displayProducts(filteredProducts)
+}
 
-// Call fetchAndPopulateData function on page load
-// window.onload = fetchAndPopulateData;
+
+const handleButtonClick = (products) => {
+    return () => {
+        const searchInput = document.getElementById('searchBar')
+        const searchTerm = searchInput.value.trim()
+        filterProducts(searchTerm, products)
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('http://localhost:3001/products')
+        if (!response.ok) {
+            throw new Error('Failed to fetch products')
+        }
+        const products = await response.json()
+        const searchButton = document.getElementById('search');
+        searchButton.addEventListener('click', handleButtonClick(products))
+        const logo = document.querySelector('.refreshLogo')
+        logo.addEventListener('click', windowReload)
+    } catch (error) {
+        console.error('click error:', error.message)
+    }
+})
+
+const windowReload = () => window.location.reload()
