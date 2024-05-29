@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 })
 
-const windowReload = () => window.location.reload()
+const windowReload = () => window.location.href = "/Client/index.html";
 
 
 
