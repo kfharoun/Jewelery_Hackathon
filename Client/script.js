@@ -50,7 +50,7 @@ const displayProducts = (products) => {
             <img src="${product.image}" alt="${product.name}">
             <h2>${product.name}</h2>
             <p class= "shortDesc">${product.shortDesc}</p>
-            <p>Price: $${product.price}</p>
+            <p class="price">$${product.price}</p>
         `;
         productsContainer.appendChild(productElement);
     });
