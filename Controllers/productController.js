@@ -2,41 +2,29 @@ const { Product } = require('../Models');
 const mongoose = require('mongoose');
 
 
-
-const getAllJewelry = async (req, res) => {
-    try {
-        const jewelry = await jewl.find();
-        res.status(200).json(jewelry);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-    
-}
-
 const getAllProducts = async (req, res) => {
-    const { sortBy } = req.query;
-    let sortCriteria = {};
-
-    if (sortBy && (sortBy === 'priceAsc' || sortBy === 'priceDesc')) {
-        sortCriteria = sortBy === 'priceAsc' ? { price: 1 } : { price: -1 };
-    }
-
     try {
-        const products = await Product.find()
-            .populate('name')
-            .populate('description')
-            .populate('image')
-            .sort(sortCriteria);
-        res.status(200).json(products);
+        const products = await product.find();
+        res.status(200).json(Product);
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+};
+
+const getProductsByPrice = async (req, res) => {
+    try {
+        const sortedProducts = await Product.find({}).sort({ price: -1 })
+
+        res.json(sortedProducts)
+    } catch (error) {
+        return res.status(500).send(error.message);
     }
 };
 
 const getInfoById = async (req, res) => {
     const { id } = req.params;
     try {
-        const product = await Product.findById(id).populate('name').populate('description').populate('image');
+        const product = await Product.findById(id).populate('name').populate('shortDesc').populate('image');
         if (!product) {
             return res.status(404).json({ message: 'Jewelry not found' });
         }
@@ -64,7 +52,7 @@ const updateProduct = async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
     try {
-        const product = await Product.findByIdAndUpdate(id, updateData, { new: true }).populate('name').populate('jewelryId');
+        const product = await Product.findByIdAndUpdate(id, updateData, { new: true }).populate('name').populate('shortDesc').populate('jewelryId');
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
@@ -77,7 +65,7 @@ const updateProduct = async (req, res) => {
 const createProduct = async (req, res) => {
     const { name, price, inStock, description, bestSeller, image, jewelryId } = req.body;
     try {
-        const newProduct = new Product({ name, price, inStock, description, bestSeller, image, jewelryId });
+        const newProduct = new Product({ name, price, inStock, description, bestSeller, image, shortDesc, jewelryId });
         await newProduct.save();
         res.status(201).json(newProduct);
     } catch (error) {
@@ -86,8 +74,8 @@ const createProduct = async (req, res) => {
 };
 
 module.exports = {
-    getAllJewelry,
     getAllProducts,
+    getProductsByPrice,
     getInfoById,
     deleteProduct,
     updateProduct,

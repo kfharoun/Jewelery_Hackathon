@@ -2,11 +2,29 @@ const { Jewelry } = require('../Models');
 const mongoose = require('mongoose');
 
 
-// const getAllJewelry = async (req, res) => {
-// };
 
-// const getInfoById = async (req, res) => {
-// };
+const getAllJewelry = async (req, res) => {
+    try {
+        const jewelry = await jewel.find();
+        res.status(200).json(jewelry);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+    
+}
+
+const getJewelById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const jewel = await Jewel.findById(id).populate('jewelryType').populate('metalType');
+        if (!jewel) {
+            return res.status(404).json({ message: 'Jewel not found' });
+        }
+        res.status(200).json(jewel);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 
 const deleteJewel = async (req, res) => {
     const { id } = req.params;
@@ -48,8 +66,8 @@ const createJewel = async (req, res) => {
 };
 
 module.exports = {
-    // getAllJewelry,
-    // getInfoById,
+    getAllJewelry,
+    getJewelById,
     deleteJewel,
     updateJewel,
     createJewel
