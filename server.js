@@ -55,3 +55,5 @@ app.put('/products/:id', productController.updateProduct)
 // delete 
 app.delete('/jewelry/:id', jewelryController.deleteJewel)
 app.delete('/products/:id', productController.deleteProduct)
+
+module.exports = app
