@@ -131,3 +131,8 @@ p {
     position: float; 
     background-color: white;
 }
+
+a {
+    all: unset; 
+    cursor: pointer;
+}

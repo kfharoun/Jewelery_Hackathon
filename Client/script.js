@@ -6,15 +6,25 @@ const displayProducts = (products) => {
     productsContainer.innerHTML = ''; // Clear previous products
     products.forEach(product => {
         const productElement = document.createElement('div');
-        productElement.innerHTML = `
+        
+        // Create an anchor element for the product
+        const linkElement = document.createElement('a');
+        linkElement.href = `display-products.html?id=${product._id}`; 
+        linkElement.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h2>${product.name}</h2>
-            <p class= "shortDesc">${product.shortDesc}</p>
+            <p class="shortDesc">${product.shortDesc}</p>
             <p class="price">$${product.price}</p>
         `;
+
+        // Append the anchor element to the product container
+        productElement.appendChild(linkElement);
+        
+        // Append the product container to the products container
         productsContainer.appendChild(productElement);
     });
 };
+
 
 // Define the fetchProducts function to fetch products from the backend
 const fetchProducts = async () => {
@@ -94,3 +104,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 const windowReload = () => window.location.reload()
+
+
+
+
+
