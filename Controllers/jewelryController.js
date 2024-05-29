@@ -1,12 +1,12 @@
-const { Jewelry } = require('../Models');
+const { Jewel } = require('../Models');
 const mongoose = require('mongoose');
 
 
 
 const getAllJewelry = async (req, res) => {
     try {
-        const jewelry = await jewel.find();
-        res.status(200).json(jewelry);
+        const jewelry = await Jewel.find({})
+        res.json(jewelry)
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -16,7 +16,7 @@ const getAllJewelry = async (req, res) => {
 const getJewelById = async (req, res) => {
     const { id } = req.params;
     try {
-        const jewel = await Jewel.findById(id).populate('jewelryType').populate('metalType');
+        const jewel = await Jewel.findById(id)
         if (!jewel) {
             return res.status(404).json({ message: 'Jewel not found' });
         }
@@ -41,29 +41,30 @@ const deleteJewel = async (req, res) => {
 
 
 const updateJewel = async (req, res) => {
-    const { id } = req.params;
-    const updateData = req.body;
     try {
-        const jewel = await Product.findByIdAndUpdate(id, updateData, { new: true }).populate('jewelryType').populate('metalType');
-        if (!jewel) {
-            return res.status(404).json({ message: 'Jewel not found' });
+        let { id } = req.params;
+        let jewel = await Jewel.findByIdAndUpdate(id, req.body, { new: true })
+        if (jewel) {
+            return res.status(200).json(jewel)
         }
-        res.status(200).json(jewel);
+        throw new Error("Jewel not found")
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        return res.status(500).send(error.message);
     }
-};
+}
 
 const createJewel = async (req, res) => {
-    const { jewelryType, metalType } = req.body;
     try {
-        const newJewel = new Jewel({ jewelryType, metalType });
-        await newJewel.save();
-        res.status(201).json(newJewel);
+        const newJewel = await new Jewel(req.body)
+        await newJewel.save()
+        return res.status(201).json({
+            newJewel
+        })
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        return res.status(500).json({error: error.message})
     }
-};
+}
+
 
 module.exports = {
     getAllJewelry,

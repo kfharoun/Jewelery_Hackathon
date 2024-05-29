@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 const getAllProducts = async (req, res) => {
     try {
-        const products = await product.find();
-        res.status(200).json(Product);
+        const products = await Product.find({});
+        res.json(products)
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -28,50 +28,50 @@ const getInfoById = async (req, res) => {
         if (!product) {
             return res.status(404).json({ message: 'Jewelry not found' });
         }
-        res.status(200).json(product);
+        res.json(product);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+
 
 const deleteProduct = async (req, res) => {
-    const { id } = req.params;
     try {
-        const product = await Product.findByIdAndDelete(id);
-        if (!product) {
-            return res.status(404).json({ message: 'Product not found' });
+        const { id } = req.params
+        const product = await Product.findByIdAndDelete(id)
+        if (product) {
+            return res.status(200).send({ message: 'Product deleted' });
         }
-        res.status(200).json({ message: 'Product successfully deleted' });
+        throw new Error("Product not found")
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        return res.status(500).send(error.message)
     }
-};
-
+}
 
 const updateProduct = async (req, res) => {
-    const { id } = req.params;
-    const updateData = req.body;
     try {
-        const product = await Product.findByIdAndUpdate(id, updateData, { new: true }).populate('name').populate('shortDesc').populate('jewelryId');
-        if (!product) {
-            return res.status(404).json({ message: 'Product not found' });
+        let { id } = req.params;
+        let product = await Product.findByIdAndUpdate(id, req.body, { new: true })
+        if (product) {
+            return res.status(200).json(product)
         }
-        res.status(200).json(product);
+        throw new Error("Product not found")
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        return res.status(500).send(error.message);
     }
-};
+}
 
 const createProduct = async (req, res) => {
-    const { name, price, inStock, description, bestSeller, image, jewelryId } = req.body;
     try {
-        const newProduct = new Product({ name, price, inStock, description, bestSeller, image, shortDesc, jewelryId });
-        await newProduct.save();
-        res.status(201).json(newProduct);
+        const newProduct = await new Product(req.body)
+        await newProduct.save()
+        return res.status(201).json({
+            newProduct
+        })
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        return res.status(500).json({error: error.message})
     }
-};
+}
 
 module.exports = {
     getAllProducts,
