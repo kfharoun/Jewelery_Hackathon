@@ -40,16 +40,7 @@ const handleLogoClick = () => {
 };
 
 
-const fetchProducts = async () => {
-    try {
-        const response = await axios.get('/products');
-        displayProducts(response.data);
-    } catch (error) {
-        console.error('Error fetching products:', error.message);
-    }
-};
-
-// Display products on the page
+// Define the displayProducts function
 const displayProducts = (products) => {
     const productsContainer = document.querySelector('.products');
     productsContainer.innerHTML = ''; // Clear previous products
@@ -64,10 +55,18 @@ const displayProducts = (products) => {
         productsContainer.appendChild(productElement);
     });
 };
-// Button Event Listener
-// document.getElementById('search').addEventListener('click', fetchProducts);
 
-// Fetch Products
+// Define the fetchProducts function to fetch products from the backend
+const fetchProducts = async () => {
+    try {
+        const response = await axios.get('http://localhost:3001/products'); // Update the URL
+        displayProducts(response.data);
+    } catch (error) {
+        console.error('Error fetching products:', error.message);
+    }
+};
+
+// Call the fetchProducts function when the page loads or when needed
 fetchProducts();
 
 
