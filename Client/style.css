@@ -44,11 +44,18 @@ h1 {
     border-radius: 8px;
     padding-right: 18px;
     padding-left: 18px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     text-transform: lowercase;
 }
 
+#search:hover {
+    background-color: rgba(0, 0, 0, 0.793);
+}
+
+#search:active {
+    background-color: black;
+}
 #searchBar {
     padding-right: 18px;
     padding-left: 18px;
@@ -60,6 +67,8 @@ h1 {
     font-size: 14px;
     font-weight: 400;
     font-style: italic;
+    outline: none;
+    border-radius: 8px;
 }
 
 .buttons {
@@ -92,26 +101,33 @@ img {
 
 h2 {
     max-width: 370px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: "EB Garamond", serif;
     font-optical-sizing: auto;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
     text-align: center;
     margin-top: 0;
+    margin-bottom: 5px;
 }
 
 p {
     font-weight: 400;
-    font-size: 13px;
+    font-size: 15px;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    color: #7d6d4a;
 
 }
 
 .shortDesc {
-    font-size: 12px;
+    font-size: 13px;
     text-transform:uppercase;
     margin-bottom: 5px;
     color: #7d6d4a;
+}
+
+.oneProduct {
+    position: float; 
+    background-color: white;
 }
