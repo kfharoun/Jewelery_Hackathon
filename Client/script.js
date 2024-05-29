@@ -86,6 +86,13 @@ const handleButtonClick = (products) => {
     }
 }
 
+const handleKeyPress = (products) => {
+    return (event) => {
+        if (event.keyCode === 13) { 
+            handleButtonClick(products)()
+        }
+    }
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -94,8 +101,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             throw new Error('Failed to fetch products')
         }
         const products = await response.json()
-        const searchButton = document.getElementById('search');
+        const searchButton = document.getElementById('search')
+        const searchInput = document.getElementById('searchBar')
+
         searchButton.addEventListener('click', handleButtonClick(products))
+        searchInput.addEventListener('keypress', handleKeyPress(products))
         const logo = document.querySelector('.refreshLogo')
         logo.addEventListener('click', windowReload)
     } catch (error) {
