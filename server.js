@@ -29,12 +29,14 @@ app.get('/products', productController.getAllProducts)
 
 // get infoByID
 app.get('/jewelry/:id', jewelryController.getJewelById)
-app.get('/products/:id', productController.getProductById)
+app.get('/products/:id', productController.getInfoById)
 
 
 //  fetch by price
-curl -X GET "http://localhost:3001/products/sort?sortBy=priceAsc"
-curl -X GET "http://localhost:3001/products/sort?sortBy=priceDesc"
+app.get('/sortedProducts', productController.getProductsByPrice);
+
+// curl -X GET "http://localhost:3001/products/sort?sortBy=priceAsc"
+// curl -X GET "http://localhost:3001/products/sort?sortBy=priceDesc"
 
 
 // sort by new to old
