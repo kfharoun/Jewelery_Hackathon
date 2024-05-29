@@ -35,25 +35,23 @@ app.get('/products/:id', productController.getInfoById)
 //  fetch by price
 app.get('/sortedProducts', productController.getProductsByPrice);
 
-// curl -X GET "http://localhost:3001/products/sort?sortBy=priceAsc"
-// curl -X GET "http://localhost:3001/products/sort?sortBy=priceDesc"
 
 
 // sort by new to old
-app.get('/productsnew', productController.getNewProductsFirst)
-app.get('/productsold', productController.getOldProductsFirst)
+// app.get('/productsnew', productController.getNewProductsFirst)
+// app.get('/productsold', productController.getOldProductsFirst)
 
 
-// create
+// // create
 app.post('/jewelry', jewelryController.createJewel)
 app.post('/products', productController.createProduct)
  
 
 // update
-app.put('/jewelry', jewelryController.updateJewel)
-app.put('/products', productController.updateProduct)
+app.put('/jewelry/:id', jewelryController.updateJewel)
+app.put('/products/:id', productController.updateProduct)
 
 
 // delete 
-app.delete('/jewelry', jewelryController.deleteJewel)
-app.delete('/products', productController.deleteProduct)
+app.delete('/jewelry/:id', jewelryController.deleteJewel)
+app.delete('/products/:id', productController.deleteProduct)
