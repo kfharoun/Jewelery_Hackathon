@@ -14,7 +14,7 @@ header {
     margin-bottom: 0px;
 }
 
-h2 {
+h1 {
     position:absolute;
     font-size: 22px;
     font-family: "EB Garamond", serif;
@@ -70,4 +70,47 @@ h2 {
 .titleDesc {
     display: flex;
     justify-content: center;
+}
+
+.products {
+        max-width: 1000px;
+        margin-top: 5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 5rem auto;
+        text-align: center;
+}
+
+.products > div {
+    flex: 0 0 calc(33.33% - 20px); 
+}
+
+img {
+    max-width: 270px;
+}
+
+h2 {
+    max-width: 370px;
+    font-size: 14px;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    margin-top: 0;
+}
+
+p {
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 50px;
+
+}
+
+.shortDesc {
+    font-size: 12px;
+    text-transform:uppercase;
+    margin-bottom: 5px;
 }
