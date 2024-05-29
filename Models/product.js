@@ -8,6 +8,7 @@ const ProductSchema = new Schema(
     description: {type: String, required: true},
     bestSeller: { type: Boolean, required: true },
     image: { type: String, required: true},
+    shortDesc: { type: String, required: true},
     jewelryId: { type: Schema.Types.ObjectId, ref: `Jewel`}
   },
   { timestamps: true }
