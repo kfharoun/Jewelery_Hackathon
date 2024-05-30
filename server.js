@@ -7,8 +7,8 @@ const logger = require('morgan')
 const cors = require('cors')
 
 
-const PORT = process.env.PORT || 3002
-//const PORT = process.env.PORT || 3001
+// const PORT = process.env.PORT || 3002
+const PORT = process.env.PORT || 3001
 
 const app = express()
 app.use(logger('dev'))
