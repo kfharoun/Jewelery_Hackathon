@@ -1,0 +1,130 @@
+
+body {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.refreshLogo {
+    width: 100px;
+    margin-left: 2rem;
+    
+}
+
+.title {
+    width:300px;
+    margin-bottom: 0px;
+}
+h1 {
+    position:absolute;
+    font-size: 22px;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    top: 22%;
+}
+
+#searchBar, #search {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#search, #addToCartButton {
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    text-transform: lowercase;
+}
+
+#search {
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+#search:hover {
+    background-color: rgba(0, 0, 0, 0.793);
+}
+
+#search:active {
+    background-color: black;
+}
+#searchBar {
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-color: #E0E0E0;
+    border-style: solid;
+    border-width: thin;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+    outline: none;
+    border-radius: 8px;
+}
+.buttons {
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+
+.product {
+    max-width: 1200px;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    flex-direction: row; 
+    word-wrap: normal;
+}
+
+.productImage {
+    object-fit: cover;
+    width: 320px;
+    height: 400px;
+    margin-right: 10rem; /* Add margin between image and text */
+}
+
+.productText {
+    max-width: 350px; 
+    display: flex;
+    flex-direction: column;
+    word-wrap: normal;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+#addToCartButton {
+    margin-top: 2rem;
+    max-width: 8rem;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 9px;
+    padding-bottom: 6px;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.product, .productText, .productImage {
+    margin-top: 5rem;
+    justify-content: center;
+    align-content: center;
+}
