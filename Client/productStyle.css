@@ -93,7 +93,7 @@ h1 {
     object-fit: cover;
     width: 320px;
     height: 625px;
-    margin-right: 10rem; /* Add margin between image and text */
+    margin-right: 10rem; 
 }
 
 .productText {
@@ -157,3 +157,4 @@ h2 {
 .desc {
     max-width: 350px;
 }
+

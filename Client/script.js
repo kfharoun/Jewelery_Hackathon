@@ -22,8 +22,8 @@ const displayProducts = (products) => {
         
         // Append the product container to the products container
         productsContainer.appendChild(productElement);
-    });
-};
+    })
+}
 
 
 // Define the fetchProducts function to fetch products from the backend
@@ -34,34 +34,33 @@ const fetchProducts = async () => {
     } catch (error) {
         console.error('Error fetching products:', error.message);
     }
-};
+}
 
-// Call the fetchProducts function when the page loads or when needed
-fetchProducts();
+
+fetchProducts()
 
 
 const fetchAndPopulateData = async () => {
     try {
-        // Fetch data from API
-        const response = await axios.get('/products');
-        const products = response.data;
+        const response = await axios.get('/products')
+        const products = response.data
 
-        // Populate the search box
-        const searchBar = document.getElementById('searchBar');
-        searchBar.value = ''; // Clear previous value
         
-        // Populate products on the page
-        const productsContainer = document.querySelector('.products');
-        productsContainer.innerHTML = ''; // Clear previous products
+        const searchBar = document.getElementById('searchBar')
+        searchBar.value = ''
+        
+        
+        const productsContainer = document.querySelector('.products')
+        productsContainer.innerHTML = ''
         products.forEach(product => {
-            const productElement = document.createElement('div');
+            const productElement = document.createElement('div')
             productElement.innerHTML = `
                 <div class="product">
                     <img src="${product.image}" alt="${product.name}" onclick="handleProductClick('${product._id}')">
                     <h3 onclick="handleProductClick('${product._id}')">${product.name}</h3>
                     <p>Price: $${product.price}</p>
                 </div>
-            `;
+            `
             productsContainer.appendChild(productElement)
         })
     } catch (error) {
@@ -94,6 +93,27 @@ const handleKeyPress = (products) => {
     }
 }
 
+const sortProductsUp = async (order) => {
+    try {
+        const response = await axios.get('http://localhost:3001/up')
+        let sorted = response.data
+        displayProducts(sorted)
+    } catch (error) {
+        console.error(`Error sorting products:`, error.message)
+    }
+}
+
+const sortProductsDown = async (order) => {
+    try {
+        const response = await axios.get('http://localhost:3001/down')
+        let sorted = response.data
+        displayProducts(sorted)
+    } catch (error) {
+        console.error(`Error sorting products:`, error.message)
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('http://localhost:3001/products')
@@ -103,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const products = await response.json()
         const searchButton = document.getElementById('search')
         const searchInput = document.getElementById('searchBar')
-
+        
         searchButton.addEventListener('click', handleButtonClick(products))
         searchInput.addEventListener('keypress', handleKeyPress(products))
         const logo = document.querySelector('.refreshLogo')
@@ -113,7 +133,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 })
 
-const windowReload = () => window.location.href = "/Client/index.html";
+document.addEventListener('DOMContentLoaded', () => {
+    const sortButtonUp = document.getElementById('sortButtonUp')
+    sortButtonUp.addEventListener('click', () => {
+        sortProductsUp('asc')
+    })
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sortButtonDown = document.getElementById('sortButtonDown')
+    sortButtonDown.addEventListener('click', () => { 
+        sortProductsDown('desc')
+    })
+})
+
+const windowReload = () => window.location.href = "/Client/index.html"
 
 
 

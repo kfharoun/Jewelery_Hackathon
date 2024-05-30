@@ -83,7 +83,7 @@ h1 {
 
 .products {
         max-width: 1000px;
-        margin-top: 5rem;
+        margin-top: 2rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -127,12 +127,42 @@ p {
     color: #7d6d4a;
 }
 
-.oneProduct {
-    position: float; 
-    background-color: white;
-}
 
 a {
     all: unset; 
     cursor: pointer;
+}
+
+.priceButton {
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-transform: lowercase;
+    font-size: 12px;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+
+.priceButton:hover {
+    background-color: rgba(0, 0, 0, 0.793);
+}
+
+.priceButton:active {
+    background-color: black;
+}
+
+.sortButtons {
+   margin-top: 10%;
+   display: flex;
+   justify-content: flex-end;
+   margin-right: 9%;
+   gap: 10px;
+   
 }
