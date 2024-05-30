@@ -52,6 +52,7 @@ const displayProductById = async () => {
                 const productText = document.createElement('div')
                 productText.classList.add('productText')
                 productText.innerHTML = `
+                
                     <h2>${product.name}</h2>
                     <p class="shortDesc">${product.shortDesc}</p>
                     <p class="price">$${product.price}</p>
