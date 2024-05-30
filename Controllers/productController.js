@@ -11,13 +11,32 @@ const getAllProducts = async (req, res) => {
     }
 };
 
-const getProductsByPrice = async (req, res) => {
+const getProductsByPriceDown = async (req, res) => {
     try {
         const sortedProducts = await Product.find({}).sort({ price: -1 })
 
         res.json(sortedProducts)
     } catch (error) {
         return res.status(500).send(error.message);
+    }
+};
+
+const getProductsByPriceUp = async (req, res) => {
+    try {
+        const sortBy = await Product.find({}).sort({ price: 1 })
+
+        res.json(sortBy)
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+};
+
+const getBestSellerProducts = async (req, res) => {
+    try {
+        const bestSellerProducts = await Product.find({ bestSeller: true })
+        res.status(200).json(bestSellerProducts);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -75,7 +94,9 @@ const createProduct = async (req, res) => {
 
 module.exports = {
     getAllProducts,
-    getProductsByPrice,
+    getProductsByPriceDown,
+    getProductsByPriceUp,
+    getBestSellerProducts,
     getInfoById,
     deleteProduct,
     updateProduct,

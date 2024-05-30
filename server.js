@@ -6,7 +6,9 @@ const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
 
-const PORT = process.env.PORT || 3001
+
+const PORT = process.env.PORT || 3002
+//const PORT = process.env.PORT || 3001
 
 const app = express()
 app.use(logger('dev'))
@@ -33,16 +35,13 @@ app.get('/products/:id', productController.getInfoById)
 
 
 //  fetch by price
-app.get('/sortedProducts', productController.getProductsByPrice);
+app.get('/up', productController.getProductsByPriceUp);
+app.get('/down', productController.getProductsByPriceDown);
 
+// fetch products by bestseller
+app.get('/best-sellers', productController.getBestSellerProducts);
 
-
-// sort by new to old
-// app.get('/productsnew', productController.getNewProductsFirst)
-// app.get('/productsold', productController.getOldProductsFirst)
-
-
-// // create
+// create
 app.post('/jewelry', jewelryController.createJewel)
 app.post('/products', productController.createProduct)
  
